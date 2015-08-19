@@ -47,7 +47,6 @@ group :development, :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
-  gem 'vcr'
   gem 'faker'
   gem 'launchy'
 end
