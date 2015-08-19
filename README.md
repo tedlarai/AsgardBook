@@ -19,3 +19,5 @@ Steps:
   4. 'rails g rspec:install' and in .rspec: '--format documentation'
   5. In 'spec/spec_helper.rb': 'require "capybara/rspec"'
   6. Configure the generators in 'config/application.rb'
+5. Devise user model
+6. Add first_name and last_name fields, including validations and sanitizers on 'application_controller'
