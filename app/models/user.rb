@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :first_name, :last_name, presence: true,
                                      length: { maximum: 30 }
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -49,6 +49,8 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
 end
 
 gem 'rails_12factor', group: :production
