@@ -26,3 +26,4 @@ Steps:
 5. Devise user model
 6. Add first_name and last_name fields, including validations and sanitizers on 'application_controller'
 7. User model validation tests using [this](https://gist.github.com/kyletcarlson/6234923) template.
+8. Feature tests of login, logout, signup features, with adjustments to actual project.
