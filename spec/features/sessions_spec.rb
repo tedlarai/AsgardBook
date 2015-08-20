@@ -6,24 +6,12 @@ describe 'User Sessions' do
   let(:password) { user.password }
   let(:name) { user.name }
 
-  def successfull_login
-    visit new_user_session_path
-    fill_in 'Email', with: email
-    fill_in 'Password', with: password
-    click_button 'Log in'
-  end
 
-  def failed_login
-    visit new_user_session_path
-    fill_in 'Email', with: email
-    fill_in 'Password', with: ""
-    click_button 'Log in'
-  end
 
   feature 'Begin session' do
 
     context 'Success' do
-      before { successfull_login }
+      before { successful_login user }
 
       it 'informs success' do
         within('.notice') { expect(page).to have_content('Signed in successfully.') }
@@ -35,7 +23,7 @@ describe 'User Sessions' do
 
     end
     context 'Failure' do
-      before { failed_login }
+      before { failed_login user }
 
       it 'informs failure' do
         within('.alert') { expect(page).to have_content('Invalid email or password.') }
@@ -49,7 +37,7 @@ describe 'User Sessions' do
 
   feature 'End session' do
     before do
-      successfull_login
+      successful_login user
       within('nav') { click_on 'Log Out' }
     end
 
