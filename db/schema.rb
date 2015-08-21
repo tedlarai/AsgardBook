@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20150821204843) do
   enable_extension "plpgsql"
 
   create_table "friendship_requests", force: :cascade do |t|
-    t.integer  "friendship_request_sender_id"
-    t.integer  "friendship_request_receiver_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "friendship_requests", ["friendship_request_receiver_id"], name: "index_friendship_requests_on_friendship_request_receiver_id", using: :btree
-  add_index "friendship_requests", ["friendship_request_sender_id"], name: "index_friendship_requests_on_friendship_request_sender_id", using: :btree
+  add_index "friendship_requests", ["receiver_id"], name: "index_friendship_requests_on_receiver_id", using: :btree
+  add_index "friendship_requests", ["sender_id"], name: "index_friendship_requests_on_sender_id", using: :btree
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "friendship_starter_id"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20150821204843) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "friendship_requests", "users", column: "friendship_request_receiver_id"
-  add_foreign_key "friendship_requests", "users", column: "friendship_request_sender_id"
+  add_foreign_key "friendship_requests", "users", column: "receiver_id"
+  add_foreign_key "friendship_requests", "users", column: "sender_id"
   add_foreign_key "friendships", "users", column: "friendship_accepter_id"
   add_foreign_key "friendships", "users", column: "friendship_starter_id"
 end

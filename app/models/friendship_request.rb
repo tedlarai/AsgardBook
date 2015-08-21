@@ -1,3 +1,4 @@
 class FriendshipRequest < ActiveRecord::Base
-  belongs_to :friendship_request_receiver
+  belongs_to :sender, class_name: 'User'
+  belongs_to :receiver, class_name: 'User'
 end
