@@ -7,3 +7,27 @@
     Other info
   </li>
 </ul>
+
+<% if current_user.is_friends_with?(@user) %>
+  <div class="">
+    <p>
+      <%= @user.name %>'s feed. you can see it cuz he/she is your friend!
+    </p>
+  </div>
+<% elsif current_user.friendship_request_receivers.include?(@user) %>
+  <div class="">
+    <p>
+      Friendship awaiting approval
+    </p>
+  </div>
+<% elsif current_user.friendship_requesters.include?(@user) %>
+  <div class="">
+    <p>
+      <%= @user.name %> asked to be your friend. Accept Reject
+    </p>
+  </div>
+<% else %>
+  <p>
+    <%= link_to 'Send friendship request', friendship_requests_create_path(receiver_id: @user.id) %>
+  </p>
+<% end %>

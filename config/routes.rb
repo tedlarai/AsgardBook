@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'friendship_requests/create'
+
+  get 'friendship_requests/destroy'
+
   get 'friends' => 'friends#show'
 
   get 'users/index'

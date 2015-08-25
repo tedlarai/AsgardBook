@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
    (starter_friends + accepter_friends).sort {|friend_a, friend_b| friend_a.name <=> friend_b.name}
  end
 
+ def is_friends_with?(other_user)
+   self.friends.include?(other_user)
+ end
+
   def name
     "#{first_name} #{last_name}"
   end
