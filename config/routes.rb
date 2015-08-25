@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friends' => 'friends#show'
+
   get 'users/index'
 
   get 'users/show'

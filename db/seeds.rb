@@ -5,6 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-100.times do
+30.times do
   FactoryGirl.create :user
+end
+
+FactoryGirl.create :user, email: 'mail@mail.com', password: 'password'
+
+(1..30).each do |x|
+  case x % 5
+  when 1
+    Friendship.create(friendship_starter_id: 31, friendship_accepter_id: x)
+  when 2
+    Friendship.create(friendship_starter_id: x, friendship_accepter_id: 31)
+  when 3
+    FriendshipRequest.create(sender_id: 31, receiver_id: 31)
+  when 4
+    FriendshipRequest.create(sender_id: x, receiver_id: 31)
+  end
 end
