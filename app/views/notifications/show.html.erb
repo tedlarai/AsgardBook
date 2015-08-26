@@ -1,0 +1,10 @@
+<h2>Notifications</h2>
+<h3>Friendship Requests</h3>
+<ul>
+  <% @requests.each do |request| %>
+    <li>
+      <%= request.sender.name %> wants to be your friend.
+      <%= link_to 'Accept',  %>
+   </li>
+  <% end %>
+</ul>

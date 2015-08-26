@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :friendships, only: [:create, :destroy]
+
   get 'friendship_requests/create'
 
   get 'friendship_requests/destroy'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#show'
   get '/home' => 'home#show'
+  get 'notifications' => 'notifications#show'
   resources :users, only: [:show, :index]
 
   # Example of regular route:

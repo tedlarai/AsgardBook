@@ -28,3 +28,5 @@ Steps:
 7. User model validation tests using [this](https://gist.github.com/kyletcarlson/6234923) template.
 8. Feature tests of login, logout, signup features, with adjustments to actual project.
 9. Implement friendship
+10. Implement sending friendship requests
+11. Reception, acceptance or rejection of friendship requests
