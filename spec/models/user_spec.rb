@@ -15,6 +15,9 @@ RSpec.describe User, type: :model do
   it { expect(user).to validate_length_of(:first_name).is_at_most(30) }
   it { expect(user).to validate_length_of(:last_name).is_at_most(30) }
 
+  # associations
+  it { expect(user).to have_many(:accepted_friendships) }
+
   describe '#name' do
     it 'returns full name' do
       expect(user.name).to eq("#{first_name} #{last_name}")

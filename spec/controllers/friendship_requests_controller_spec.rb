@@ -13,7 +13,7 @@ RSpec.describe FriendshipRequestsController, type: :controller do
     it "returns http success" #do
     #  get :destroy
     #  expect(response).to have_http_status(:success)
-    end
+    #end
   end
 
 end

@@ -50,6 +50,7 @@ RSpec.feature "Friendships", type: :feature do
       request
       click_on 'Notifications'
       click_on 'Accept'
+      # visit 'Friends' and expect to see the name of the friend!! 
       visit user_path(requester_user)
 
       expect(page).to have_content("#{requester_user.name} feed")

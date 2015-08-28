@@ -1,10 +1,13 @@
 <h2>Notifications</h2>
 <h3>Friendship Requests</h3>
 <ul>
-  <% @requests.each do |request| %>
+  <% @friendship_requests.each do |friendship_request| %>
     <li>
-      <%= request.sender.name %> wants to be your friend.
-      <%= link_to 'Accept',  %>
+      <%= friendship_request.sender.name %> wants to be your friend.
+      <%= link_to 'Accept', friendships_path(
+          requester: friendship_request.sender,
+          return_to: request.original_url),
+        method: 'post' %>
    </li>
   <% end %>
 </ul>

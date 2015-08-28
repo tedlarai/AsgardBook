@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  resources :friendships, only: [:create, :destroy]
 
-  get 'friendship_requests/create'
-
-  get 'friendship_requests/destroy'
 
   get 'friends' => 'friends#show'
 
@@ -20,6 +16,8 @@ Rails.application.routes.draw do
   get '/home' => 'home#show'
   get 'notifications' => 'notifications#show'
   resources :users, only: [:show, :index]
+  resources :friendship_requests, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
