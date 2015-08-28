@@ -50,10 +50,52 @@ RSpec.feature "Friendships", type: :feature do
       request
       click_on 'Notifications'
       click_on 'Accept'
-      # visit 'Friends' and expect to see the name of the friend!! 
-      visit user_path(requester_user)
+      visit friends_path
 
-      expect(page).to have_content("#{requester_user.name} feed")
+      expect(page).to have_content("#{requester_user.name}")
+
+      click_on 'Notifications'
+
+      expect(page).to_not have_content("#{requester_user.name} wants to be your friend.")
+    end
+
+    it "can be accepted via requester's page" do
+      request
+      visit user_path(requester_user)
+      click_on 'Accept'
+      visit friends_path
+
+      expect(page).to have_content("#{requester_user.name}")
+
+      click_on 'Notifications'
+
+      expect(page).to_not have_content("#{requester_user.name} wants to be your friend.")
+    end
+
+    it 'can be rejected via navbar' do
+      request
+      click_on 'Notifications'
+      click_on 'Reject'
+      visit friends_path
+
+      expect(page).to_not have_content("#{requester_user.name}")
+
+      click_on 'Notifications'
+
+      expect(page).to_not have_content("#{requester_user.name} wants to be your friend.")
+    end
+
+    it "can be accepted via requester's page" do
+      request
+      visit user_path(requester_user)
+      click_on 'Reject'
+      visit friends_path
+
+      expect(page).to_not have_content("#{requester_user.name}")
+
+      click_on 'Notifications'
+
+      expect(page).to_not have_content("#{requester_user.name} wants to be your friend.")
     end
   end
 end

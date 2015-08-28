@@ -23,7 +23,14 @@
 <% elsif current_user.friendship_requesters.include?(@user) %>
   <div class="">
     <p>
-      <%= @user.name %> wants to be your friend. Accept Reject
+      <%= @user.name %> wants to be your friend.
+      <%= link_to 'Accept', friendships_path(
+          friendship_request: FriendshipRequest.find_by(sender_id: @user.id, receiver_id: current_user.id),
+          return_to: request.original_url),
+        method: 'post' %>
+      <%= link_to 'Reject', friendship_request_path(FriendshipRequest.find_by(sender_id: @user.id, receiver_id: current_user.id), 
+          return_to: request.original_url),
+        method: 'delete' %>
     </p>
   </div>
 <% else %>

@@ -10,6 +10,8 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def destroy
+    FriendshipRequest.find(params[:id]).destroy
+    redirect_to params[:return_to]
   end
 
   private
