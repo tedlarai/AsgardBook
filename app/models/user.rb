@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :received_requests, foreign_key: :receiver_id, class_name: 'FriendshipRequest', dependent: :destroy
   has_many :friendship_request_receivers, through: :sent_requests, source: :receiver
   has_many :friendship_requesters, through: :received_requests, source: :sender
+  # Posts associations
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
 
  def friends
    (starter_friends + accepter_friends).sort {|friend_a, friend_b| friend_a.name <=> friend_b.name}

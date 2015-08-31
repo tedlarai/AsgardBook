@@ -30,3 +30,4 @@ Steps:
 9. Implement friendship
 10. Implement sending friendship requests
 11. Reception, acceptance or rejection of friendship requests
+12. `rails g model Post author:references`
