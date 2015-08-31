@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831114714) do
+ActiveRecord::Schema.define(version: 20150831135917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,28 @@ ActiveRecord::Schema.define(version: 20150831114714) do
   add_index "friendships", ["friendship_accepter_id"], name: "index_friendships_on_friendship_accepter_id", using: :btree
   add_index "friendships", ["friendship_starter_id"], name: "index_friendships_on_friendship_starter_id", using: :btree
 
+  create_table "post_contents", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "content_id"
+    t.string   "content_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "post_contents", ["content_type", "content_id"], name: "index_post_contents_on_content_type_and_content_id", using: :btree
+  add_index "post_contents", ["post_id"], name: "index_post_contents_on_post_id", using: :btree
+
+  create_table "post_texts", force: :cascade do |t|
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer  "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "text"
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
@@ -68,5 +86,6 @@ ActiveRecord::Schema.define(version: 20150831114714) do
   add_foreign_key "friendship_requests", "users", column: "sender_id"
   add_foreign_key "friendships", "users", column: "friendship_accepter_id"
   add_foreign_key "friendships", "users", column: "friendship_starter_id"
+  add_foreign_key "post_contents", "posts"
   add_foreign_key "posts", "users", column: "author_id"
 end

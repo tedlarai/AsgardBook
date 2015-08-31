@@ -1,23 +1,15 @@
 Rails.application.routes.draw do
-
-
   get 'friends' => 'friends#show'
-
   get 'users/index'
-
   get 'users/show'
-
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'home#show'
   get '/home' => 'home#show'
   get 'notifications' => 'notifications#show'
   resources :users, only: [:show, :index]
   resources :friendship_requests, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
+  resources :posts, except: [:index, :edit, :update]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

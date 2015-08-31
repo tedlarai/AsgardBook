@@ -1,4 +1,17 @@
 <h2><%= current_user.name %>'s Home</h2>
 <p>
-  The time is: <%= Time.current %>
+  <%= link_to "New Post", new_post_path %>
 </p>
+<h3>Posts</h3>
+<div class="posts">
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <h4><%= post.author.name %></h4>
+        <p>
+          <%= post.text %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
