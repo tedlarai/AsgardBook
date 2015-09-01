@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
   devise_for :users
-  root 'home#show'
+  root 'timeline#show'
   get '/home' => 'home#show'
+  get 'timeline' => 'timeline#show'
   get 'notifications' => 'notifications#show'
   resources :users, only: [:show, :index]
   resources :friendship_requests, only: [:create, :destroy]

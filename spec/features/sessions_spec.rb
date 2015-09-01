@@ -17,8 +17,8 @@ describe 'User Sessions' do
         within('.notice') { expect(page).to have_content('Signed in successfully.') }
       end
 
-      it "goes to user's home page" do
-        within('h2') { expect(page).to have_content("#{name}'s Home") }
+      it "goes to user's timeline page" do
+        within('h2') { expect(page).to have_content("Timeline") }
       end
 
     end

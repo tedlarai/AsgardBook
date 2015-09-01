@@ -13,7 +13,7 @@ RSpec.feature "Posts", type: :feature do
       fill_in "Text", with: "This is the text of the post!!"
       click_on "Submit"
 
-      within('h2') { expect(page).to have_content("Home") }
+      within('h2') { expect(page).to have_content("Timeline") }
       expect(page).to have_content("This is the text of the post!!")
     end
   end

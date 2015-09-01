@@ -23,3 +23,8 @@ FactoryGirl.create :user, email: 'mail@mail.com', password: 'password'
     FriendshipRequest.create(sender_id: x, receiver_id: 31)
   end
 end
+
+100.times do
+  user = User.all.sample
+  user.posts.create(text: Faker::Hacker.say_something_smart)
+end

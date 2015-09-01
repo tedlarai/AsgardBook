@@ -1,0 +1,14 @@
+<h2>Timeline</h2>
+<ul>
+  <% @posts.each do |post| %>
+  <li>
+    <h3><%= post.author.name %></h3>
+    <p>
+      <%= post.updated_at %>
+    </p>
+    <p>
+      <%= post.text %>
+    </p>
+  </li>
+  <% end %>
+</ul>

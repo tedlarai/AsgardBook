@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
    self.friends.include?(other_user)
  end
 
+ def timeline_content
+   content = self.posts.all
+   friends.each do |friend|
+     content += friend.posts.all
+   end
+   content.sort_by(&:updated_at)
+ end
+
   def name
     "#{first_name} #{last_name}"
   end
