@@ -17,4 +17,19 @@ RSpec.feature "Posts", type: :feature do
       expect(page).to have_content("This is the text of the post!!")
     end
   end
+
+  feature "user can erase own posts" do
+    let(:author) { create :user }
+    let(:own_post) { author.posts.create(text: 'This is my own post') }
+    before do
+      successful_login author
+    end
+
+    it "can erase own posts" do
+      visit post_path(own_post)
+      click_on 'Delete Post'
+      visit timeline_path
+      expect(page).to_not have_content('This is my own post')
+    end
+  end
 end

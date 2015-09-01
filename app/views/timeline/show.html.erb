@@ -2,13 +2,15 @@
 <ul>
   <% @posts.each do |post| %>
   <li>
-    <h3><%= post.author.name %></h3>
-    <p>
-      <%= post.updated_at %>
-    </p>
-    <p>
-      <%= post.text %>
-    </p>
+    <%= link_to post_path(post) do %>
+      <h3><%= post.author.name %></h3>
+      <p>
+        <%= post.updated_at %>
+      </p>
+      <p>
+        <%= post.text %>
+      </p>
+    <% end %>
   </li>
   <% end %>
 </ul>

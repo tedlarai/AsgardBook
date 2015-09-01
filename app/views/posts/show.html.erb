@@ -1,0 +1,7 @@
+<h2>Post Page</h2>
+<p>
+  <%= @post.text %>
+</p>
+<% if @post.author == current_user %>
+  <%= link_to 'Delete Post', post_path(@post), method: 'delete' %>
+<% end %>
