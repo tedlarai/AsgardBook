@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150831135917) do
+ActiveRecord::Schema.define(version: 20150901133434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20150831135917) do
 
   add_index "friendships", ["friendship_accepter_id"], name: "index_friendships_on_friendship_accepter_id", using: :btree
   add_index "friendships", ["friendship_starter_id"], name: "index_friendships_on_friendship_starter_id", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "liker_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["liker_id"], name: "index_likes_on_liker_id", using: :btree
+  add_index "likes", ["post_id"], name: "index_likes_on_post_id", using: :btree
 
   create_table "post_contents", force: :cascade do |t|
     t.integer  "post_id"
@@ -86,6 +96,8 @@ ActiveRecord::Schema.define(version: 20150831135917) do
   add_foreign_key "friendship_requests", "users", column: "sender_id"
   add_foreign_key "friendships", "users", column: "friendship_accepter_id"
   add_foreign_key "friendships", "users", column: "friendship_starter_id"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users", column: "liker_id"
   add_foreign_key "post_contents", "posts"
   add_foreign_key "posts", "users", column: "author_id"
 end

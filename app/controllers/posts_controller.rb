@@ -15,6 +15,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @likers = @post.likers
+    @liked = @likers.include?(current_user)
   end
 
   def destroy

@@ -2,6 +2,22 @@
 <p>
   <%= @post.text %>
 </p>
+
+<% unless @liked %>
+  <%= link_to 'Like', likes_path(like: { liker_id: current_user.id, post_id: @post.id }), method: 'post' %>
+<% else %>
+  <%= link_to 'Unlike', like_path(like: { liker_id: current_user.id, post_id: @post.id }), method: 'delete' %>
+<% end %>
+
 <% if @post.author == current_user %>
   <%= link_to 'Delete Post', post_path(@post), method: 'delete' %>
 <% end %>
+
+<h3><%= @likers.count %> liked this Post:</h3>
+<ul id="post_likers">
+  <% @likers.each do |post_liker| %>
+    <li>
+      <%= link_to post_liker.name, post_liker %>
+    </li>
+  <% end %>
+</ul>
