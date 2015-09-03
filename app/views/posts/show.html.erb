@@ -13,6 +13,28 @@
   <%= link_to 'Delete Post', post_path(@post), method: 'delete' %>
 <% end %>
 
+<h3>Comments</h3>
+<ul id="comments">
+  <% @comments.each do |comment| %>
+    <li>
+      <h4><%= comment.author.name %></h4>
+      <p>
+        <%= comment.text %>
+      </p>
+      <% if current_user == comment.author %>
+        <%= link_to 'Delete comment', comment_path(comment), method: 'delete' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%= form_for(@comment) do |f| %>
+  <%= f.label :text, 'Leave a comment:' %><br />
+  <%= f.hidden_field :post_id, value:"#{@post.id}" %>
+  <%= f.hidden_field :author_id, value:"#{current_user.id}" %>
+  <%= f.text_area :text %><br />
+  <%= f.submit "Submit comment" %>
+<% end %>
+
 <h3><%= @likers.count %> liked this Post:</h3>
 <ul id="post_likers">
   <% @likers.each do |post_liker| %>

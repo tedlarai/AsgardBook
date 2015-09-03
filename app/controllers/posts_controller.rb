@@ -17,6 +17,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @likers = @post.likers
     @liked = @likers.include?(current_user)
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def destroy

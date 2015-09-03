@@ -31,3 +31,6 @@ Steps:
 10. Implement sending friendship requests
 11. Reception, acceptance or rejection of friendship requests
 12. `rails g model Post author:references`
+13. Implement likes
+14. implement comments
+15. To try to avoid hidden fields, try nested resources in routes (learn it!!) when refactoring.
