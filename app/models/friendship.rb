@@ -1,4 +1,4 @@
-require_relative 'friendship_validator'
+# require_relative 'friendship_validator'
 
 class Friendship < ActiveRecord::Base
   validates :friendship_starter, presence: true

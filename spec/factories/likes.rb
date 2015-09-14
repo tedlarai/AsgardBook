@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :like do
-    liker nil
-post nil
+    liker
+    post
   end
 
 end

@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, :last_name, presence: true,
-                                     length: { maximum: 30 }
-
   # Friendship associations
   has_many :started_friendships, foreign_key: :friendship_starter_id, class_name: 'Friendship', dependent: :destroy
   has_many :accepted_friendships, foreign_key: :friendship_accepter_id, class_name: 'Friendship', dependent: :destroy
@@ -24,8 +21,14 @@ class User < ActiveRecord::Base
   # Comments associations
   has_many :comments, foreign_key: :author_id, dependent: :destroy
 
+  # Validations
+  validates :first_name, :last_name, presence: true,
+                                     length: { maximum: 30 }
+
+
+
  def friends
-   (starter_friends + accepter_friends).sort {|friend_a, friend_b| friend_a.name <=> friend_b.name}
+   (starter_friends.reload + accepter_friends.reload).sort {|friend_a, friend_b| friend_a.name <=> friend_b.name}
  end
 
  def is_friends_with?(other_user)
