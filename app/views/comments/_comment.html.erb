@@ -1,14 +1,9 @@
-<h3>Comments</h3>
-<ul id="comments">
-  <% @comments.each do |comm| %>
-    <li>
-      <h4><%= comm.author.name %></h4>
-      <p>
-        <%= comm.text %>
-      </p>
-      <% if current_user == comm.author %>
-        <%= link_to 'Delete comment', comment_path(comm), method: 'delete' %>
-      <% end %>
-    </li>
+<li>
+  <h4><%= comment.author.name %></h4>
+  <p>
+    <%= comment.text %>
+  </p>
+  <% if current_user == comment.author %>
+    <%= link_to 'Delete comment', comment, method: 'delete' %>
   <% end %>
-</ul>
+</li>

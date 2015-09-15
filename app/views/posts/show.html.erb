@@ -13,7 +13,11 @@
   <%= link_to 'Delete Post', post_path(@post), method: 'delete' %>
 <% end %>
 
-<%= render @comments %>
+<h3>Comments</h3>
+<ul id="comments">
+  <%= render @comments %>
+</ul>
+
 <%= render 'comments/comment_form' %>
 
 <h3><%= @likers.count %> liked this Post:</h3>
