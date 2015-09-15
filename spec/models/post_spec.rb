@@ -19,4 +19,15 @@ RSpec.describe Post, type: :model do
     it { expect(post).to have_many(:likers).class_name('User') }
     it { expect(post).to have_many(:comments) }
   end
+
+  describe 'Scope:' do
+    it '.ordered returns the posts ordered by created_at' do
+      author = create(:user)
+      post1 = create(:post, author: author, created_at: 3.weeks.ago)
+      post2 = create(:post, author: author, created_at: 1.hour.ago)
+      post3 = create(:post, author: author, created_at: 2.years.ago)
+
+      expect(author.posts.ordered).to eq([post2, post1, post3])
+    end
+  end
 end

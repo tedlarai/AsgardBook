@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  scope :ordered, -> { order(created_at: :desc) }
   belongs_to :author, class_name: "User"
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes
