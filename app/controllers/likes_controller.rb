@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   def create
-    @like = Like.new(like_params)
+    @like = Post.find(params[:post_id]).likes.build(liker: current_user)
     if @like.save
       #success message
     else
@@ -10,13 +10,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    Like.find_by(like_params).destroy
+    Like.find_by(post: Post.find(params[:id]), liker: current_user).destroy
     redirect_to :back
   end
-
-  private
-
-    def like_params
-      params.require(:like).permit(:liker_id, :post_id)
-    end
 end

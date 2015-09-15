@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy]
   resources :posts, except: [:index, :edit, :update], shallow: true do
     resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
-  resources :likes, only: [:create, :destroy]
+
 
 
   # Example of regular route:

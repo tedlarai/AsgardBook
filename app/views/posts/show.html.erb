@@ -3,10 +3,10 @@
   <%= @post.text %>
 </p>
 
-<% unless @liked %>
-  <%= link_to 'Like', likes_path(like: { liker_id: current_user.id, post_id: @post.id }), method: 'post' %>
+<% unless user_liked_post? %>
+  <%= link_to 'Like', post_likes_path(@post), method: 'post' %>
 <% else %>
-  <%= link_to 'Unlike', like_path(like: { liker_id: current_user.id, post_id: @post.id }), method: 'delete' %>
+  <%= link_to 'Unlike', like_path, method: 'delete' %>
 <% end %>
 
 <% if @post.author == current_user %>
@@ -20,11 +20,7 @@
 
 <%= render 'comments/comment_form' %>
 
-<h3><%= @likers.count %> liked this Post:</h3>
-<ul id="post_likers">
-  <% @likers.each do |post_liker| %>
-    <li>
-      <%= link_to post_liker.name, post_liker %>
-    </li>
-  <% end %>
+<h3><%= @likes.count %> liked this Post:</h3>
+<ul id="post_likes">
+  <%= render @likes %>
 </ul>
