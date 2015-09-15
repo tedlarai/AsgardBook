@@ -8,10 +8,10 @@
   </li>
 </ul>
 
-<% if current_user.is_friends_with?(@user) %>
+<% if current_user.is_friends_with?(@user) || current_user == @user %>
   <div class="">
     <p>
-      <%= @user.name %> feed. you can see it cuz he/she is your friend!
+      <%= @user.name %> feed. you can see it cuz he/she is your friend! (or you!!)
     </p>
   </div>
 <% elsif current_user.friendship_request_receivers.include?(@user) %>
@@ -28,12 +28,13 @@
           friendship_request: FriendshipRequest.find_by(sender_id: @user.id, receiver_id: current_user.id),
           return_to: request.original_url),
         method: 'post' %>
-      <%= link_to 'Reject', friendship_request_path(FriendshipRequest.find_by(sender_id: @user.id, receiver_id: current_user.id), 
+      <%= link_to 'Reject', friendship_request_path(FriendshipRequest.find_by(sender_id: @user.id, receiver_id: current_user.id),
           return_to: request.original_url),
         method: 'delete' %>
     </p>
   </div>
-<% else %>
+
+<% else  %>
   <p>
     <%= link_to 'Send friendship request', friendship_requests_path(receiver_id: @user.id), method: 'post' %>
   </p>
