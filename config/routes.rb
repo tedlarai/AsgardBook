@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
   resources :friendship_requests, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
-  resources :posts, except: [:index, :edit, :update]
+  resources :posts, except: [:index, :edit, :update], shallow: true do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :likes, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
