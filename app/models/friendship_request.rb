@@ -6,4 +6,5 @@ class FriendshipRequest < ActiveRecord::Base
   validates :receiver, presence: true
   include ActiveModel::Validations
   validates_with FriendshipRequestBidirectionalUniqueness
+  validates_with SelfRequestProhibition
 end

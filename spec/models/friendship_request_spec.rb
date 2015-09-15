@@ -18,6 +18,12 @@ RSpec.describe FriendshipRequest, type: :model do
       expect(reverse_request).to_not be_valid
       expect(repeated_request).to_not be_valid
     end
+    it 'cannot allow self-request' do
+      self_requester = create(:user)
+      self_request = build(:friendship_request, sender: self_requester, receiver: self_requester)
+
+      expect(self_request).to_not be_valid
+    end
   end
 
   describe 'Associations: ' do

@@ -28,6 +28,13 @@ RSpec.describe Friendship, type: :model do
       expect(repeated_friendship).to_not be_valid
     end
 
+    it 'cannot allow self-friendship' do
+      self_friend = create(:user)
+      self_friendship = build(:friendship, friendship_starter: self_friend, friendship_accepter: self_friend)
+
+      expect(self_friendship).to_not be_valid
+    end
+
     describe 'Associations:' do
       it { expect(friendship).to belong_to(:friendship_starter).class_name('User') }
       it { expect(friendship).to belong_to(:friendship_accepter).class_name('User') }
