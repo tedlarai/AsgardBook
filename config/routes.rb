@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'friends' => 'friends#show'
   get 'users/index'
   get 'users/show'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users
   root 'timeline#show'
   get '/home' => 'home#show'
   get 'timeline' => 'timeline#show'
@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   resources :posts, except: [:index, :edit, :update], shallow: true do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
-  end
-  devise_scope :user do
-    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session_path
   end
 
 
