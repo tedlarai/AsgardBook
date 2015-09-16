@@ -13,5 +13,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+    Friendship.find_by(id: params[:id]).destroy
+    redirect_to :back
   end
 end
