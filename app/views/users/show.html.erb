@@ -13,14 +13,7 @@
      It's you!!
    </p>
 <% elsif current_user.is_friends_with?(@user) %>
-  <div class="">
-    <p>
-      <%= link_to 'Unfriend', find_friendship(@user, current_user), method: 'delete' %>
-    </p>
-    <p>
-      <%= @user.name %> feed. you can see it cuz he/she is your friend!
-    </p>
-  </div>
+  <%= render '/users/friend_user' %>
 <% elsif current_user.friendship_request_receivers.include?(@user) %>
   <div class="">
     <p>

@@ -1,0 +1,8 @@
+<div class="">
+  <p>
+    <%= link_to 'Unfriend', find_friendship(@user, current_user), method: 'delete' %>
+  </p>
+  <ul>
+    <%= render @user.posts.ordered %>
+  </ul>
+</div>
