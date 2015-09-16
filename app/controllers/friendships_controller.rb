@@ -5,10 +5,10 @@ class FriendshipsController < ApplicationController
       friendship_starter_id: friendship_request.sender_id)
     if @friendship.save
       friendship_request.destroy
-      redirect_to params[:return_to]
+      redirect_to :back
     else
       #some error message
-      render params[:return_to]
+      redirect_to :back
     end
   end
 

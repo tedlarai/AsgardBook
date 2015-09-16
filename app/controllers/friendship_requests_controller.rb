@@ -11,7 +11,7 @@ class FriendshipRequestsController < ApplicationController
 
   def destroy
     FriendshipRequest.find(params[:id]).destroy
-    redirect_to params[:return_to]
+    redirect_to :back
   end
 
   private

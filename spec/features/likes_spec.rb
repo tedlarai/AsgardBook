@@ -11,7 +11,7 @@ RSpec.feature "Likes", type: :feature do
     visit post_path(post_to_like)
     click_on "Like"
 
-    within('#post_likers') { expect(page).to have_content("#{liker.name}") }
+    within('#post_likes') { expect(page).to have_content("#{liker.name}") }
     expect(page).to have_content('Unlike')
   end
 
@@ -21,7 +21,7 @@ RSpec.feature "Likes", type: :feature do
     visit post_path(post_to_like)
     click_on 'Unlike'
 
-    within('#post_likers') { expect(page).to_not have_content("#{liker.name}") }
+    within('#post_likes') { expect(page).to_not have_content("#{liker.name}") }
     expect(page).to have_content('Like')
   end
 

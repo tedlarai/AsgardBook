@@ -1,14 +1,5 @@
 <h2>Notifications</h2>
 <h3>Friendship Requests</h3>
 <ul>
-  <% @friendship_requests.each do |friendship_request| %>
-    <li>
-      <%= friendship_request.sender.name %> wants to be your friend.
-      <%= link_to 'Accept', friendships_path(
-          friendship_request: friendship_request,
-          return_to: request.original_url),
-        method: 'post' %>
-      <%= link_to 'Reject', friendship_request_path(friendship_request, return_to: request.original_url), method: 'delete' %>
-   </li>
-  <% end %>
+  <%= render @friendship_requests %> 
 </ul>

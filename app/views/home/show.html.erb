@@ -5,13 +5,6 @@
 <h3>Posts</h3>
 <div class="posts">
   <ul>
-    <% @posts.each do |post| %>
-      <li>
-        <h4><%= post.author.name %></h4>
-        <p>
-          <%= post.text %>
-        </p>
-      </li>
-    <% end %>
+    <%= render @posts %>
   </ul>
 </div>

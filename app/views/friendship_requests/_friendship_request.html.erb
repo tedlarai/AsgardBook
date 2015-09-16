@@ -1,0 +1,6 @@
+<li>
+  <%= friendship_request.sender.name %> wants to be your friend.
+  <%= link_to 'Accept',friendships_path(friendship_request: friendship_request),
+      method: 'post' %>
+  <%= link_to 'Reject', friendship_request, method: 'delete' %>
+</li>
