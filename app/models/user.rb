@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
    friends.each do |friend|
      content += friend.posts.all
    end
-   content.sort_by(&:updated_at)
+   content.sort_by(&:updated_at).reverse
  end
 
   def name

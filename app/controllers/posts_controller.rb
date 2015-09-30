@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to root_path
+      redirect_to home_path
     else
       render new_post_path
     end

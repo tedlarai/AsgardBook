@@ -1,5 +1,5 @@
 <li>
-  <h4><%= link_to post.author.name, post.author %></h4>
+  <h4><%= gravatar_for post.author %><%= link_to post.author.name, post.author %></h4>
   <p>
     <%= post.updated_at %>
   </p>

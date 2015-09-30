@@ -20,7 +20,13 @@ body {
     width: 200px;
   }
 }
+.navbar {
+  height:50px;
+}
 @media (min-width: 950px) {
+  .navbar {
+    height:70px;
+  }
   body {padding-top: 70px;}
   .navbar-nav {
     li a {
@@ -65,4 +71,7 @@ html{
   img {
     margin: 10px;
   }
+}
+li {
+  list-style: none;
 }
