@@ -10,13 +10,14 @@
 </head>
 
 <body>
-  <% if user_signed_in? %>
     <%= render 'shared/navbar' %>
-  <% end %>
 
-  <%= render 'shared/flash' %>
+    <section class="container-fluid" id="content">
+      <%= yield %>
+    </section>
 
-  <%= yield %>
+
+    <%= render 'shared/footer' %>
 </body>
 
 </html>
