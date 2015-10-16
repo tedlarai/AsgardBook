@@ -1,6 +1,6 @@
 Facebook clone made for [The Odin Project](http://www.theodinproject.com/ruby_on_rails/final-project)
 
-Steps:
+Configuration Steps:
 
 1. Set rails to use postgresql with 'rails new --database=postgresql'.
 2. Setup Heroku following the instructions [here](https://devcenter.heroku.com/articles/getting-started-with-rails4).
@@ -25,12 +25,9 @@ Steps:
   6. Configure the generators in 'config/application.rb'
 5. Devise user model
 6. Add first_name and last_name fields, including validations and sanitizers on 'application_controller'
-7. User model validation tests using [this](https://gist.github.com/kyletcarlson/6234923) template.
-8. Feature tests of login, logout, signup features, with adjustments to actual project.
-9. Implement friendship
-10. Implement sending friendship requests
-11. Reception, acceptance or rejection of friendship requests
-12. `rails g model Post author:references`
-13. Implement likes
-14. implement comments
-15. To try to avoid hidden fields, try nested resources in routes (learn it!!) when refactoring.
+7. Model validation tests using [this](https://gist.github.com/kyletcarlson/6234923) template.
+
+Notes:
+
+1. I did not include "OmniAuth" (and regretted using "Devise") because:
+..* The Odin Project does a great job taking you by the hands and gradually introducing tidbits of new things in addition to the Hartl Tutorial. But at this final project, time to take of the training wheels and go solo (I believed), the effort necessary to dominate these new additions deviated the focus from applying what I already studied. I took myself spending hours researching about these features, trying to not just copy and paste code bits necessary to their configuration. I had partial success with Devise (it worked, but I do not _fully_ understand what is going on behind the curtains, in the configuration files), but I gave up doing this at this project half way through the implementation of OmniAuth. I rolled back one or two git commits and called it a day. I will finish the Odin Project (when I will have a solid grasp on everything at a level expected from a junior professional) and then I will explore the inner dungeons of Rails. Only then I will be comfortable implementing Devise and OmniAuth without feeling like I am cheating somehow.
